@@ -1,0 +1,59 @@
+<section>
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>
+          <b>Lista de usuarios</b>
+        </h1>
+      </div>
+      <div class="col-md-4" style="margin-top: 2em">
+        <input class="form-control col-md-4" type="text" data-ng-model="search" placeholder="Search" ng-change="figureOutItemsToDisplay()"
+          style="background-color: black; color: white;" />
+      </div>
+    </div>
+  </div>
+
+  <div class="list-group">
+    <div class="row">
+      <div class="col-sm-2">
+        <p style="color: moccasin">Nombre</p>
+      </div>
+      <div class="col-sm-2">
+        <p style="color: moccasin">Apellido</p>
+      </div>
+      <div class="col-sm-3">
+        <p style="color: moccasin">Departamento</p>
+      </div>
+      <div class="col-sm-2">
+        <p style="color: moccasin">Puesto</p>
+      </div>
+      <div class="col-sm-2">
+        <p style="color: moccasin">Roles</p>
+      </div>
+    </div>
+
+    <div class="list-group">
+      <a data-ng-repeat="user in pagedItems" data-ui-sref="admin.user({userId: user._id})" class="list-group-item">
+        <div class="row">
+          <div class="col-sm-2">
+            <span data-ng-bind="user.firstName"></span>
+          </div>
+          <div class="col-sm-2">
+            <span data-ng-bind="user.lastName"></span>
+          </div>
+          <div class="col-sm-3">
+            <span data-ng-bind="user.department"></span>
+          </div>
+          <div class="col-sm-2">
+            <span data-ng-bind="user.job"></span>
+          </div>
+          <div class="col-sm-2">
+            <span data-ng-bind="user.roles"></span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage"
+      ng-change="pageChanged()"></pagination>
+</section>

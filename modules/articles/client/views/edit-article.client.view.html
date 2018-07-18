@@ -1,0 +1,176 @@
+<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
+  <div class="page-header">
+    <h1>
+      <b>Editar acuerdo</b>
+    </h1>
+  </div>
+  <div class="col-md-12">
+    <form name="articleForm" class="form-horizontal" data-ng-submit="update()" novalidate>
+      <fieldset>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'user,secretaria' && article.state=='Pendiente'">
+          <label class="control-label" for="sesionDate" style="color: moccasin">Fecha de sesión:</label>
+          <div class="controls">
+            <input name="sesionDate" type="date" data-ng-model="article.sesionDate" id="sesionDate" max="2020-12-31" min="2018-05-14"
+              class="datepicker" required>
+          </div>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'user,secretaria' && article.state=='Pendiente'">
+          <label class="control-label" for="title" style="color: moccasin">Número de sesión:</label>
+          <div class="controls">
+            <input name="sesion" type="text" data-ng-model="article.sesion" id="sesion" class="form-control" placeholder="Número de Sesión"
+              required>
+          </div>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'user,secretaria' && article.state=='Pendiente'">
+          <label class="control-label" for="title" style="color: moccasin">Número de acuerdo:</label>
+          <div class="controls">
+            <input name="title" type="text" data-ng-model="article.title" id="title" class="form-control" placeholder="Número de Acuerdo"
+              required>
+          </div>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'admin,user' && article.state !='Aprobado por Departamento' && article.state !='Aprobado por Alcalde' && article.state !='Mejorar Departamento'">
+          <label class="control-label" for="department" style="color: moccasin">Departamento:</label>
+          <select name="department" ng-model="article.department" id="department" class="form-control" required>
+            <option value="" disabled selected>Seleccione el departamento</option>
+            <option value="Alcaldía Municipal">Alcaldía Municipal</option>
+            <option value="Archivo Central">Archivo Central</option>
+            <option value="Auditoría Interna">Auditoría Interna</option>
+            <option value="Bienes Inmuebles">Bienes Inmuebles</option>
+            <option value="CECUDI">CECUDI</option>
+            <option value="Contabilidad">Contabilidad</option>
+            <option value="Cuadrilla Municipal">Cuadrilla Municipal</option>
+            <option value="Desarrollo y Control Urbano">Desarrollo y Control Urbano</option>
+            <option value="Escuela Municipal de Música">Escuela Municipal de Música</option>
+            <option value="Gestión de Cobros">Gestión de Cobros</option>
+            <option value="Hacienda Municipal">Hacienda Municipal</option>
+            <option value="Igualdad de Género y Desarrollo Social">Igualdad de Género y Desarrollo Social</option>
+            <option value="Programación y Ejecución Presupuestaria">Programación y Ejecución Presupuestaria</option>
+            <option value="Proveeduría">Proveeduría</option>
+            <option value="Recursos Humanos">Recursos Humanos</option>
+            <option value="Secretaría del Concejo Municipal">Secretaría del Concejo Municipal</option>
+            <option value="Servicios Informáticos">Servicios Informáticos</option>
+            <option value="Servicios Jurídicos">Servicios Jurídicos</option>
+            <option value="Tesorería">Tesorería</option>
+            <option value="Topografía">Topografía</option>
+            <option value="Unidad Técnica de Gestión Ambiental">Unidad Técnica de Gestión Ambiental</option>
+          </select>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'user,secretaria' && article.state != 'Aprobado por Alcalde' && article.state != 'Terminado'">
+          <label class="control-label" for="lastDate" style="color: moccasin">Fecha finiquito:</label>
+          <div class="controls">
+            <input name="lastDate" type="date" data-ng-model="article.lastDate" id="lastDate" max="2020-12-31" min="2018-05-14" class="datepicker"
+              required>
+          </div>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'user,jefe,admin' ||  authentication.user.roles == 'admin,user' && article.state !='Aprobado por Departamento' && article.state !='Aprobado por Alcalde' && article.state !='Mejorar Departamento'">
+          <label class="control-label" for="state" style="color: moccasin">Asignar trabajo:</label>
+          <a class="btn btn-primary" href="http://localhost:3000/admin/users">
+            <i class="glyphicon glyphicon-user"></i>
+          </a>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles != 'user,secretaria' || article.state == 'Aprobado por Alcalde' || article.state == 'Terminado'">
+          <label class="control-label" for="state" style="color: moccasin">Estado del acuerdo:</label>
+          <select name="department" ng-model="article.state" id="state" class="form-control" required>
+            <option value="" disabled selected> Seleccione el estado del acuerdo</option>
+            <option data-ng-show="authentication.user.roles == 'admin,user' && article.state == 'Pendiente' " value="Asignado a Departamento">
+              Asignado a Departamento</option>
+            <option data-ng-show="authentication.user.roles == 'user,jefe,admin'  && article.state == 'Asignado a Departamento'" value="Asignado a Colaborador">
+              Asignado a Colaborador</option>
+            <option data-ng-show="authentication.user.roles == 'user' && article.state!='Aprobado por Colaborador' " value="Aprobado por Colaborador">
+              Aprobado por Colaborador</option>
+            <option data-ng-show="authentication.user.roles == 'user,jefe,admin' && article.state != 'Asignado a Departamento'" value="Aprobado por Departamento">
+              Aprobado por Departamento</option>
+            <option data-ng-show="authentication.user.roles == 'user,jefe,admin' && (article.state == 'Aprobado por Colaborador' || article.state == 'Mejorar Departamento')"
+              value="Mejorar Colaborador"> Mejorar Colaborador</option>
+            <option data-ng-show="authentication.user.roles == 'admin,user' && article.state == 'Aprobado por Alcalde' && article.state == 'Aprobado por Departamento'"
+              value="Mejorar Departamento">
+              Mejorar Departamento</option>
+            <option data-ng-show="article.state == 'Terminado' || (authentication.user.roles == 'admin,user' && article.state == 'Aprobado por Departamento') || article.state == 'Mejorar Departamento'"
+              value="Aprobado por Alcalde"> Aprobado por Alcalde</option>
+            <option data-ng-show="authentication.user.roles == 'user,secretaria' && article.state == 'Aprobado por Alcalde'" value="Terminado">
+              Terminado</option>
+          </select>
+        </div>
+
+        <div class="form-group" data-ng-show="article.state !='Terminado'">
+          <input type="file" data-ng-model="article.file" id="file" required>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'admin,user' || authentication.user.roles == 'user' || authentication.user.roles == 'user,jefe,admin' && article.state !='Terminado' && article.state !='Aprobado por Alcalde'">
+          <label class="control-label" for="content" style="color: moccasin">Descripción del acuerdo:</label>
+          <div class="controls">
+            <textarea name="content" data-ng-model="article.content" id="content" class="form-control" cols="15" rows="4" placeholder="Descripción"
+              style="color: black;" disabled></textarea>
+          </div>
+        </div>
+        <div class="form-group" data-ng-show="authentication.user.roles == 'user,secretaria' && article.state !='Terminado' && article.state !='Aprobado por Alcalde'">
+          <label class="control-label" for="content" style="color: moccasin">Descripción del acuerdo:</label>
+          <div class="controls">
+            <textarea name="content" data-ng-model="article.content" id="content" class="form-control" cols="15" rows="4" placeholder="Descripción"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'admin,user' && article.state !='Terminado'">
+          <label class="control-label" for="mayorSummary" style="color: moccasin">Apreciación del alcalde:</label>
+          <div class="controls">
+            <textarea name="mayorSummary" data-ng-model="article.mayorSummary" id="mayorSummary" class="form-control" cols="15" rows="4"
+              placeholder="Resumen"></textarea>
+          </div>
+        </div>
+        <div class="form-group" data-ng-show="authentication.user.roles != 'admin,user' && article.state !='Pendiente' && article.state !='Terminado' && article.state !='Aprobado por alcalde'">
+          <label class="control-label" for="mayorSummary" style="color: moccasin">Apreciación del alcalde:</label>
+          <div class="controls">
+            <textarea name="mayorSummary" data-ng-model="article.mayorSummary" id="mayorSummary" class="form-control" cols="15" rows="4"
+              placeholder="Resumen" style="color: black;" disabled></textarea>
+          </div>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'user,jefe,admin' && article.state !='Terminado'">
+          <label class="control-label" for="chiefSummary" style="color: moccasin">Apreciación del jefe:</label>
+          <div class="controls">
+            <textarea name="chiefSummary" data-ng-model="article.chiefSummary" id="chiefSummary" class="form-control" cols="15" rows="4"
+              placeholder="Resumen"></textarea>
+          </div>
+        </div>
+        <div class="form-group" data-ng-show="authentication.user.roles != 'user,jefe,admin' && article.state !='Terminado' && article.state !='Pendiente' && article.state !='Aprobado por alcalde'">
+          <label class="control-label" for="chiefSummary" style="color: moccasin">Apreciación del jefe:</label>
+          <div class="controls">
+            <textarea name="chiefSummary" data-ng-model="article.chiefSummary" id="chiefSummary" class="form-control" cols="15" rows="4"
+              placeholder="Resumen" style="color: black;" disabled></textarea>
+          </div>
+        </div>
+
+        <div class="form-group" data-ng-show="authentication.user.roles == 'user'">
+          <label class="control-label" for="contributorSummary" style="color: moccasin">Apreciación del colaborador:</label>
+          <div class="controls">
+            <textarea name="contributorSummary" data-ng-model="article.contributorSummary" id="contributorSummary" class="form-control"
+              cols="15" rows="4" placeholder="Resumen"></textarea>
+          </div>
+        </div>
+        <div class="form-group" data-ng-show="authentication.user.roles != 'user' && article.state !='Terminado' && article.state !='Pendiente'">
+          <label class="control-label" for="contributorSummary" style="color: moccasin">Apreciación del colaborador:</label>
+          <div class="controls">
+            <textarea name="contributorSummary" data-ng-model="article.contributorSummary" id="contributorSummary" class="form-control"
+              cols="15" rows="4" placeholder="Resumen" style="color: black;" disabled></textarea>
+          </div>
+        </div>
+
+        <div class="text-center form-group">
+          <input type="submit" value="Actualizar" class="btn btn-primary">
+        </div>
+
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+</section>

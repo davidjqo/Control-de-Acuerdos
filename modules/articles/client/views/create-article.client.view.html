@@ -1,0 +1,86 @@
+<section data-ng-controller="ArticlesController">
+  <div class="page-header">
+    <span>
+      <h1>
+        <b>Nuevo acuerdo</b>
+      </h1>
+    </span>
+  </div>
+
+  <div class="pull-right">
+    <a class="btn btn-primary" href="/articles">
+      <i class="glyphicon glyphicon-search"></i>
+    </a>
+  </div>
+
+  <div class="col-md-12">
+    <form name="articleForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+      <fieldset>
+
+        <div class="text-center form-group">
+          <label class="control-label" for="sesionDate" style="color: moccasin">Fecha de sesión</label>
+          <br>
+          <div class="controls">
+            <input name="sesionDate" type="date" data-ng-model="sesionDate" id="sesionDate" max="2018-06-05" min="2018-01-01" class="datepicker"
+              required>
+          </div>
+        </div>
+
+        <div class="text-center form-group">
+          <label class="control-label" for="sesion" style="color: moccasin">Número de sesión</label>
+          <div class="controls">
+            <input name="sesion" type="text" data-ng-model="sesion" id="sesion" placeholder="" size="15" autocomplete="off" required>
+          </div>
+        </div>
+
+        <div class="text-center form-group">
+          <label class="control-label" for="title" style="color: moccasin">Número de acuerdo</label>
+          <div class="controls">
+            <input name="title" type="text" data-ng-model="title" id="title" placeholder="" size="15" autocomplete="off" required>
+          </div>
+        </div>
+
+        <div class="text-center form-group">
+          <label class="control-label" for="department" style="color: moccasin">Departamento</label>
+          <br>
+          <select name="department" ng-model="department" id="department" class="text-center form-group" style="max-width:60%;" required>
+            <option value="Alcaldía Municipal">Alcaldía Municipal</option>
+          </select>
+        </div>
+
+        <div class="text-center form-group">
+          <label class="control-label" for="lastDate" style="color: moccasin">Fecha finiquito</label>
+          <br>
+          <div class="controls">
+            <input name="lastDate" type="date" data-ng-model="lastDate" id="lastDate" max="2020-12-31" min="2018-06-06" class="datepicker"
+              required>
+          </div>
+        </div>
+
+        <div class="text-center form-group">
+          <div class="controls">
+            <textarea name="content" data-ng-model="content" id="content" rows="4" cols="50" placeholder="                                         Descripción"></textarea>
+          </div>
+        </div>
+
+        <section class="row">
+          <div class="text-center form-group">
+            <span class="btn btn-success btn-file">
+              Seleccionar archivo
+              <input type="file">
+            </span>
+          </div>
+        </section>
+
+        <div class="text-center form-group">
+          <input type="submit" class="btn btn-primary">
+        </div>
+
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+</section>

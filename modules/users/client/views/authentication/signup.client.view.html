@@ -1,0 +1,50 @@
+<div data-ng-controller="AuthenticationController">
+  <h3 class="col-md-12 text-center"></h3>
+   <div class="col-md-12">
+    <form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
+      <fieldset>
+        <div class="form-group">
+            <i class="glyphicon glyphicon-info-sign"></i>
+          <label for="firstName">Nombre completo</label>
+          <input type="text" required id="firstName" name="firstName" class="form-control"
+               data-ng-model="credentials.firstName" placeholder="Nombre completo">
+        </div>
+        <div class="form-group">
+            <i class="glyphicon glyphicon-info-sign"></i>
+          <label for="lastName">Apellido</label>
+          <input type="text" id="lastName" name="lastName" class="form-control"
+               data-ng-model="credentials.lastName" placeholder="Apellido">
+        </div>
+        <div class="form-group">
+            <i class="glyphicon glyphicon-envelope"></i>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email"
+               placeholder="Email">
+        </div>
+        <div class="form-group">
+            <i class="glyphicon glyphicon-user"></i>
+          <label for="username">Nombre de usuario</label>
+          <input type="text" id="username" name="username" class="form-control"
+               data-ng-model="credentials.username" placeholder="Nombre de Usuario">
+        </div>
+        <div class="form-group">
+            <i class="glyphicon glyphicon-lock"></i>
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" class="form-control"
+               data-ng-model="credentials.password" placeholder="Contraseña">
+        </div>
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-large btn-primary">Registrarse localmente</button>
+          
+        </div>
+      
+        
+
+
+        <div data-ng-show="error" class="text-center text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div data-ng-controller="AuthenticationController">
+  <h3 class="col-md-12 text-center"></h3>
+  <div class="col-md-12">
+    <form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
+      <fieldset>
+       
+        <div class="form-group">
+            <i class="glyphicon glyphicon-user"></i>
+          <label for="username">Nombre de usuario</label>
+          <input type="text" id="username" name="username" class="form-control"
+               data-ng-model="credentials.username" placeholder="Nombre de usuario">
+          <br>
+          <i class="glyphicon glyphicon-lock"></i>
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" class="form-control"
+               data-ng-model="credentials.password" placeholder="Contraseña">
+          <br>
+          <div class="text-center form-group">
+            <a style="color: white" data-ui-sref="password.forgot">¿Olvidó su contraseña?</a>
+            </div>
+          <div class="text-center form-group">
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+          </div>
+        </div>
+        <alert type="danger" data-ng-show="error" class="text-center text-danger">
+          <span data-ng-bind="error"></span>
+        </alert>
+      </fieldset>
+    </form>
+  </div>
+</div>

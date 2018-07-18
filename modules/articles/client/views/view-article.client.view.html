@@ -1,0 +1,111 @@
+<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
+  <div class="page-header">
+    <h1>
+      <b>Información del acuerdo</b>
+    </h1>
+  </div>
+  <!---data-ng-show="authentication.user._id == article.user._id"
+      -->
+  <div class="pull-right">
+    <a class="btn btn-primary" data-ng-show="authentication.user.roles == 'user,secretaria' || authentication.user.roles == 'admin,user' || authentication.user.roles == 'user,jefe,admin' || authentication.user.roles == 'user'"
+      data-ui-sref="articles.edit({articleId: article._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-show="authentication.user.roles == 'user,secretaria' && article.state == 'Pendiente' "
+      data-ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+    <a class="btn btn-primary" href="/articles">
+      <i class="glyphicon glyphicon-search"></i>
+    </a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Fecha de sesión</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.sesionDate | date:'mediumDate'"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Número de sesión</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.sesion"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Número de acuerdo</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.title"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Departamento</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.department"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Fecha finiquito</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.lastDate | date:'mediumDate'"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Estado del acuerdo</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.state"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Descripción</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.content"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Archivo adjunto</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.file"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Apreciación alcalde</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.mayorSummary"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Apreciación jefe</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.chiefSummary"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Apreciación colaborador</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.contributorSummary"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-5">
+          <strong style="color:moccasin">Fecha de asignación</strong>
+        </div>
+        <div class="col-md-6" data-ng-bind="article.firstDate | date:'mediumDate'"></div>
+      </div>
+      <hr/>
+    </div>
+  </div>
+</section>
