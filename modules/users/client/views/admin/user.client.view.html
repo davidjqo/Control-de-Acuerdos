@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-8">
         <h1>
-          <b>Información de
+          <b class="cliente-title">Información de
             <span data-ng-bind="user.firstName"></span>
             <span data-ng-bind="user.lastName"></span>
           </b>
@@ -24,56 +24,56 @@
     <div class="col-md-8">
       <div class="row">
         <div class="col-md-4">
-          <strong style="color: moccasin">Nombre completo</strong>
+          <strong class="cliente-title">Nombre completo</strong>
         </div>
         <div class="col-md-6" data-ng-bind="user.firstName"></div>
       </div>
       <hr/>
       <div class="row">
         <div class="col-md-4">
-          <strong style="color: moccasin">Apellido</strong>
+          <strong class="cliente-title">Apellido</strong>
         </div>
         <div class="col-md-6" data-ng-bind="user.lastName"></div>
       </div>
       <hr/>
       <div class="row">
         <div class="col-md-4">
-          <strong style="color: moccasin">Email</strong>
+          <strong class="cliente-title">Email</strong>
         </div>
         <div class="col-md-6" data-ng-bind="user.email"></div>
       </div>
       <hr/>
       <div class="row">
         <div class="col-md-4">
-          <strong style="color: moccasin">Autenticación</strong>
+          <strong class="cliente-title">Autenticación</strong>
         </div>
         <div class="col-md-6" data-ng-bind="user.provider"></div>
       </div>
       <hr/>
       <div class="row">
         <div class="col-md-4">
-          <strong style="color: moccasin">Fecha de registro</strong>
+          <strong class="cliente-title">Fecha de registro</strong>
         </div>
         <div class="col-md-6" data-ng-bind="user.created | date:'mediumDate'"></div>
       </div>
       <hr/>
       <div class="row" data-ng-show="authentication.user.roles != 'admin,user'">
         <div class="col-md-4">
-          <strong style="color: moccasin">Roles</strong>
+          <strong class="cliente-title">Roles</strong>
         </div>
         <div class="col-md-6" data-ng-bind="user.roles"></div>
       </div>
       <hr/>
       <div class="row">
         <div class="col-md-4">
-          <strong style="color: moccasin">Nombre del puesto</strong>
+          <strong class="cliente-title">Nombre del puesto</strong>
         </div>
         <div class="col-md-6" data-ng-bind="user.job"></div>
       </div>
       <hr/>
       <div class="row">
         <div class="col-md-4">
-          <strong style="color: moccasin">Departamento</strong>
+          <strong class="cliente-title">Departamento</strong>
         </div>
         <div class="col-md-6" data-ng-bind="user.department"></div>
       </div>

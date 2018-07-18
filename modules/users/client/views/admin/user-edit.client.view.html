@@ -1,7 +1,7 @@
 <section>
   <div class="page-header">
     <h1>
-      <b>Información de
+      <b class="cliente-title">Información de
         <span data-ng-bind="user.firstName"></span>
         <span data-ng-bind="user.lastName"></span>
       </b>
@@ -11,14 +11,14 @@
     <form name="userForm" class="form-horizontal" data-ng-submit="update()" novalidate>
       <fieldset>
         <div class="form-group">
-          <label class="control-label" for="firstName" style="color: moccasin;">Nombre Completo</label>
+          <label class="control-label" for="firstName">Nombre Completo</label>
           <div class="controls">
             <input name="firstName" type="text" data-ng-model="user.firstName" id="firstName" class="form-control" placeholder="First Name"
               required>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label" for="lastName" style="color: moccasin;">Apellidos</label>
+          <label class="control-label" for="lastName">Apellidos</label>
           <div class="controls">
             <input type="text" name="lastName" data-ng-model="user.lastName" id="lastName" class="form-control" placeholder="Last Name"
             />
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group" data-ng-show="authentication.user.roles != 'user,jefe,admin'">
-          <label class="control-label" for="department" style="color: moccasin;">Departamento</label>
+          <label class="control-label" for="department">Departamento</label>
           <select name="department" ng-model="user.department" id="department" class="form-control" required>
             <option value="" disabled selected> Seleccione el departamento</option>
             <option value="Alcaldía Municipal"> Alcaldía</option>
@@ -54,14 +54,14 @@
         </div>
 
         <div class="form-group">
-          <label class="control-label" for="job" style="color: moccasin;">Nombre del puesto</label>
+          <label class="control-label" for="job">Nombre del puesto</label>
           <div class="controls">
             <input name="job" type="text" data-ng-model="user.job" id="job" class="form-control" placeholder="Nombre del puesto">
           </div>
         </div>
 
         <div class="form-group" data-ng-show="authentication.user.roles != 'user,jefe,admin'">
-          <label class="control-label" for="roles" style="color: moccasin;">Roles</label>
+          <label class="control-label" for="roles">Roles</label>
           <select name="roles" ng-model="user.roles" id="roles" class="form-control" required>
             <option value="" disabled selected> Seleccione el rol</option>
             <option value="admin"> Administrador</option>
