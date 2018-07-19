@@ -41,9 +41,13 @@
 }
 
 .cliente-title {
-  color: moccasin;
+  color: #f29730;
 }
 
 .control-label {
+  color: moccasin;
+}
+
+.descripcion {
   color: moccasin;
 }
