@@ -44,3 +44,9 @@ a:hover .header-profile-image {
 .acuerdo-title {
   color: #f29730;
 }
+
+.title {
+  color: moccasin;
+  font-size: 45px;
+  text-align: left;
+}
